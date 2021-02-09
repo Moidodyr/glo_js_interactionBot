@@ -3,6 +3,9 @@
 const rundomGame = function () {
     alert('Угадай число от 1 до 100');
 
+    let counter = 10,
+        qsn;
+
     const isNumber = function (n) {
         return !isNaN(parseFloat(n)) && isFinite(n);
     };
@@ -15,22 +18,39 @@ const rundomGame = function () {
 
     const randomInt = getRandomInt();
 
+
     const main = function () {
         let number = prompt('Введите число: ');
 
         const resaltFunc = function () {
             if (number === null) {
                 alert('Игра окончена');
+            } else if (counter == 0) {
+                qsn = confirm('Количество попыток закончено. Хотите сыгать еще?');
+                if (qsn) {
+                    main();
+                } else {
+                    alert('Игра окончена');
+                }
             } else if (!isNumber(parseFloat(number))) {
-                alert('Это не число. Введите число: ');
+                counter--;
+                alert(`Это не число. Осталось ${counter} попыток. Введите число: `);
                 main();
             } else if (parseFloat(number) == randomInt) {
                 alert('Поздравляю, Вы угадали!!!');
+                qsn = confirm('Вы победитель! Хотите сыгать еще?');
+                if (qsn) {
+                    main();
+                } else {
+                    alert('Игра окончена');
+                }
             } else if (parseFloat(number) > randomInt) {
-                alert('Загаданное число меньше.');
+                counter--;
+                alert(`Загаданное число меньше. Осталось ${counter} попыток.`);
                 main();
             } else {
-                alert('Загаданное число больше.');
+                alert(`Загаданное число больше. Осталось ${counter} попыток.`);
+                counter--;
                 main();
             }
         };
