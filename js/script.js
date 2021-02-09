@@ -19,11 +19,14 @@ const fin = function () {
         result;
 
     const resaltFunc = function () {
-        if(number == randomInt) {
-            alert('Поздравляю, Вы угадали!!!');
-        } else if(number === null){
+        if(number === null) {
             alert('Игра окончена');
-        } else if(number > randomInt){
+        } else if (!isNumber(parseFloat(number))) {
+            alert('Это не число. Введите число: ');
+            fin();
+        } else if(parseFloat(number) == randomInt){
+            alert('Поздравляю, Вы угадали!!!');
+        } else if(parseFloat(number) > randomInt){
             result = alert('Загаданное число меньше.');
             fin();
         } else {
