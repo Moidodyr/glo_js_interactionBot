@@ -25,9 +25,10 @@ const rundomGame = function () {
         const resaltFunc = function () {
             if (number === null) {
                 alert('Игра окончена');
-            } else if (counter == 0) {
-                qsn = confirm('Количество попыток закончено. Хотите сыгать еще?');
+            } else if (counter == 1) {
+                qsn = confirm('Вы не угадали. Количество попыток закончено. Хотите сыгать еще?');
                 if (qsn) {
+                    counter = 10;
                     main();
                 } else {
                     alert('Игра окончена');
@@ -40,6 +41,7 @@ const rundomGame = function () {
                 alert('Поздравляю, Вы угадали!!!');
                 qsn = confirm('Вы победитель! Хотите сыгать еще?');
                 if (qsn) {
+                    counter = 10;
                     main();
                 } else {
                     alert('Игра окончена');
@@ -49,8 +51,8 @@ const rundomGame = function () {
                 alert(`Загаданное число меньше. Осталось ${counter} попыток.`);
                 main();
             } else {
-                alert(`Загаданное число больше. Осталось ${counter} попыток.`);
                 counter--;
+                alert(`Загаданное число больше. Осталось ${counter} попыток.`);
                 main();
             }
         };
