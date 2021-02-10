@@ -15,22 +15,41 @@ const randomGame = function () {
     const randomInt = getRandomInt(),
         introduction = alert('Угадай число от 1 до 100');
 
+    let counter = 10,
+        qsn,
+        qsn2;
+
 
     const mainFunc = function () {
         let number = prompt('Введите число: ');
 
         if (parseFloat(number) == randomInt) {
-            alert('Поздравляю, Вы угадали!!!');
+            qsn = confirm('Поздравляю, Вы угадали!!! Хотите сыграть еще?');
+            if (qsn) {
+                randomGame();
+            } else {
+                alert('Игра окончена!');
+            }
+        } else if (counter == 1) {
+            qsn2 = confirm('Попытки закончились, хотите сыграть еще?');
+            if (qsn2) {
+                randomGame();
+            } else {
+                alert('Игра окончена!');
+            }
         } else if (number == null) {
             alert('Игра окончена!');
         } else if (!isNumber(parseFloat(number))) {
-            alert('Это не число!');
+            counter--;
+            alert(`Это не число! У вас осталось ${counter} попыток.`);
             mainFunc();
-        } else if(parseFloat(number) > randomInt){
-            alert('Загаданное число меньше.');
+        } else if (parseFloat(number) > randomInt) {
+            counter--;
+            alert(`Загаданное число меньше. Осталось ${counter} попыток.`);
             mainFunc();
-        } else if(parseFloat(number) < randomInt) {
-            alert('Загаданное число больше.');
+        } else if (parseFloat(number) < randomInt) {
+            counter--;
+            alert(`Загаданное число больше. Осталось ${counter} попыток`);
             mainFunc();
         }
 
