@@ -15,8 +15,6 @@ const randomGame = function () {
     const randomInt = getRandomInt(),
         introduction = alert('Угадай число от 1 до 100');
 
-    let counter = 10;
-
 
     const mainFunc = function () {
         let number = prompt('Введите число: ');
