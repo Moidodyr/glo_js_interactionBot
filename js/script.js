@@ -1,8 +1,7 @@
 'use strict';
 
-const rundomGame = function () {
-    alert('Угадай число от 1 до 100');
 
+const randomGame = function () {
     const isNumber = function (n) {
         return !isNaN(parseFloat(n)) && isFinite(n);
     };
@@ -13,31 +12,32 @@ const rundomGame = function () {
         return Math.floor(Math.random() * (max - min)) + min;
     };
 
-    const randomInt = getRandomInt();
+    const randomInt = getRandomInt(),
+        introduction = alert('Угадай число от 1 до 100');
 
-    const main = function () {
+
+    const mainFunc = function () {
         let number = prompt('Введите число: ');
 
-        const resaltFunc = function () {
-            if (number === null) {
-                alert('Игра окончена');
-            } else if (!isNumber(parseFloat(number))) {
-                alert('Это не число. Введите число: ');
-                main();
-            } else if (parseFloat(number) == randomInt) {
-                alert('Поздравляю, Вы угадали!!!');
-            } else if (parseFloat(number) > randomInt) {
-                alert('Загаданное число меньше.');
-                main();
-            } else {
-                alert('Загаданное число больше.');
-                main();
-            }
-        };
+        if (parseFloat(number) == randomInt) {
+            console.log('randomInt: ', randomInt);
+            console.log('isNumber(parseFloat(number)): ', isNumber(parseFloat(number)));
+            alert('Поздравляю, Вы угадали!!!');
+        } else if (number == null) {
+            alert('Игра окончена!');
+        } else if (!isNumber(parseFloat(number))) {
+            alert('Это не число!');
+            mainFunc();
+        } else if(parseFloat(number) > randomInt){
+            alert('Загаданное число меньше.');
+            mainFunc();
+        } else if('Загаданное число больше.') {
+            alert('Загаданное число больше.');
+            mainFunc();
+        }
 
-        return resaltFunc();
     };
 
-    main();
+    mainFunc();
 };
-rundomGame();
+randomGame();
