@@ -15,6 +15,8 @@ const randomGame = function () {
     const randomInt = getRandomInt(),
         introduction = alert('Угадай число от 1 до 100');
 
+    let counter = 10;
+
 
     const mainFunc = function () {
         let number = prompt('Введите число: ');
@@ -31,7 +33,7 @@ const randomGame = function () {
         } else if(parseFloat(number) > randomInt){
             alert('Загаданное число меньше.');
             mainFunc();
-        } else if('Загаданное число больше.') {
+        } else if(parseFloat(number) < randomInt) {
             alert('Загаданное число больше.');
             mainFunc();
         }
