@@ -20,8 +20,6 @@ const randomGame = function () {
         let number = prompt('Введите число: ');
 
         if (parseFloat(number) == randomInt) {
-            console.log('randomInt: ', randomInt);
-            console.log('isNumber(parseFloat(number)): ', isNumber(parseFloat(number)));
             alert('Поздравляю, Вы угадали!!!');
         } else if (number == null) {
             alert('Игра окончена!');
